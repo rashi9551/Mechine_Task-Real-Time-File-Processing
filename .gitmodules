@@ -1,0 +1,3 @@
+[submodule "log-processing-node-server"]
+	path = log-processing-node-server
+	url = https://github.com/rashi9551/ProcessErrorLogs-Worker-Server.git
