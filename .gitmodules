@@ -1,0 +1,6 @@
+[submodule "log-processing-client"]
+	path = log-processing-client
+	url = https://github.com/rashi9551/ProcessErrorLogs-Worker-Server.git
+[submodule "log-processing-service"]
+	path = log-processing-service
+	url = https://github.com/rashi9551/ProccessErrorLogs.git
