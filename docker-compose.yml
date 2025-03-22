@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  nextjs-app:
+    build:
+      context: ./log-processing-client  # Correct context path
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    volumes:
+      - ./log-processing-client:/app  # Correct volume mount
+      - /app/node_modules
+
+  worker:
+    build:
+      context: ./log-processing-service  # Correct context path
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"  # Expose port 3001 for the worker
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    volumes:
+      - ./log-processing-service:/app  # Correct volume mount
+      - /app/node_modules
+
+volumes:
+  redis_data:
