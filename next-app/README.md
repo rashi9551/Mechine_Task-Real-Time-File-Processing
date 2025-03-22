@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Log Processing Microservice
 This project is a Node.js microservice that processes large log files asynchronously using BullMQ and stores the results in Supabase. The system is containerized using Docker for easy deployment.
 
