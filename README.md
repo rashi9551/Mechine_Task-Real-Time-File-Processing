@@ -7,6 +7,7 @@ This project is a Node.js microservice that processes large log files asynchrono
 - **Worker**: Process jobs asynchronously using streams.
 - **Database**: Store processed results in Supabase (`job_status` and `log_stats` tables).
 - **Docker Support**: Containerized setup for easy deployment.
+- **Rate Limiting**: Ensure Supabase API limits are not exceeded when fetching or inserting data.
 
 ## Setup Instructions
 
@@ -19,8 +20,8 @@ This project is a Node.js microservice that processes large log files asynchrono
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/log-processing-microservice.git
-cd log-processing-microservice
+git clone https://github.com/rashi9551/Mechine_Task-Real-Time-File-Processing.git
+cd Mechine_Task-Real-Time-File-Processing
 ```
 
 ### 2. Set Up Environment Variables
@@ -91,6 +92,7 @@ CREATE TABLE log_stats (
 ```
 
 3. Enable Supabase Storage for file uploads.
+4. **Note:** Supabase has API rate limits. If you're processing a high volume of logs, implement batching strategies to avoid exceeding the limits.
 
 ### 4. Run Docker Compose
 The repository includes a `docker-compose.yml` file. To start the application using Docker Compose, run the following command:
@@ -142,7 +144,7 @@ Stores the processed log data.
 ## Environment Variables
 The following environment variables are required:
 
-### Frontend
+### Next
 | Variable                    | Description                       |
 |-----------------------------|-----------------------------------|
 | NEXT_PUBLIC_SUPABASE_URL    | Supabase project URL.            |
@@ -154,7 +156,7 @@ The following environment variables are required:
 | UPSTASH_REDIS_REST_URL      | Upstash Redis REST URL.         |
 | UPSTASH_REDIS_REST_TOKEN    | Upstash Redis REST token.       |
 
-### Backend
+### Node-Server
 | Variable            | Description                                  |
 |--------------------|----------------------------------------------|
 | REDIS_HOST        | Redis host (default: `localhost`).          |
@@ -166,5 +168,4 @@ The following environment variables are required:
 | TEST_RETRY       | Enable test retry mode (default: `false`).   |
 
 ---
-This README is clean, concise, and formatted for easy understanding. Let me know if you need any modifications!
 
